@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Project Title</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #005f99;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            background-color: #003d66;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ffcc00;
+        }
+
+        /* Responsive Navigation */
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #003d66;
+                position: absolute;
+                top: 50px;
+                left: 0;
+            }
+
+            .nav-links a {
+                margin: 10px 0;
+                padding: 10px 0;
+                text-align: center;
+                border-bottom: 1px solid #005f99;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+            gap: 20px;
+        }
+
+        section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section h2 {
+            border-bottom: 2px solid #005f99;
+            padding-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #005f99;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Grid Layout for About Section */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .grid-item {
+            background-color: #e6f7ff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .contact-form button {
+            background-color: #005f99;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #003d66;
+        }
+
+        /* Modal Popup */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+        }
+
+        .modal-header, .modal-footer {
+            padding: 10px;
+            background-color: #005f99;
+            color: white;
+            text-align: center;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover, .close:focus {
+            color: #ffcc00;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                flex-direction: column;
+            }
+
+            nav a {
+                margin: 10px 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to My Graduate Project</h1>
+</header>
+
+<nav>
+    <span class="menu-icon" onclick="toggleMenu()">☰</span>
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<main>
+    <section id="home">
+        <h2>Home</h2>
+        <p>Welcome to the homepage of my graduate-level project. Here, you can explore the various sections and learn more about the work I've done.</p>
+    </section>
+
+    <section id="about">
+        <h2>About</h2>
+        <div class="grid-container">
+            <div class="grid-item">
+                <h3>Project Background</h3>
+                <p>This project was developed as part of my graduate studies, focusing on advanced web development techniques.</p>
+            </div>
+            <div class="grid-item">
+                <h3>Team Members</h3>
+                <p>The project was a collaborative effort, with contributions from various team members specializing in different areas of development.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <form class="contact-form" onsubmit="return validateForm()">
+            <input type="text" id="name" placeholder="Your Name">
+            <input type="email" id="email" placeholder="Your Email">
+            <textarea id="message" placeholder="Your Message"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <section class="interactive">
+        <button id="reveal-btn" onclick="openModal()">Click to Reveal a Message</button>
+    </section>
+</main>
+
+<!-- Modal Structure -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Special Message</h2>
+        </div>
+        <div class="modal-body">
+            <p>Thank you for exploring my project! Your interest is greatly appreciated.</p>
+        </div>
+        <div class="modal-footer">
+            <h3>End of Message</h3>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2024 Your Project Name</p>
+</footer>
+
+<script>
+    // Toggle navigation menu on mobile
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    // Modal Popup Logic
+    function openModal() {
+        document.getElementById('myModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('myModal').style.display = 'none';
+    }
+
+    // Form Validation
+    function validateForm() {
+        const name = document.getElementById('name').value;
+        const email =
